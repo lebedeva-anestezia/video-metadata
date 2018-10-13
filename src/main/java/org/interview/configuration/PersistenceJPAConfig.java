@@ -33,7 +33,7 @@ public class PersistenceJPAConfig {
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
-        dataSource.setUrl("jdbc:hsqldb:mem:.");
+        dataSource.setUrl("jdbc:hsqldb:mem:testdb");
         dataSource.setUsername( "sa" );
         return dataSource;
     }

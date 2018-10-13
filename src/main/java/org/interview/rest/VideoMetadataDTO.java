@@ -5,7 +5,7 @@ import java.util.List;
 public class VideoMetadataDTO {
     private Long id;
     private String title;
-    private String album;
+    private String album = "";
     private String artist;
     private Integer duration;
     private String genre;

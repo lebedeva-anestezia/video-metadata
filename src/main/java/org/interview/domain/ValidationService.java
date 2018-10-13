@@ -27,13 +27,12 @@ public class ValidationService {
     }
 
     public void isUpdateParametersValid(VideoMetadata videoMetadata) {
+        if (videoMetadata.getReleaseYear() == null) {
+            return;
+        }
         if (!checkYearIsValid(videoMetadata.getReleaseYear())) {
             throw new IllegalArgumentException("The passed release year is invalid");
         }
-    }
-
-    public void isDeleteParametersValid(Long id) {
-
     }
 
     private boolean isIdExist(Long id) {

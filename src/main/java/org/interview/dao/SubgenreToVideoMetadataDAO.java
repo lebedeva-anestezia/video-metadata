@@ -1,37 +1,32 @@
 package org.interview.dao;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "SUBGENRE_TO_VIDEO_METADATA")
-public class SubgenreToVideoMetadataDAO {
+public class SubgenreToVideoMetadataDAO implements Serializable {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    private Long id;
-
     @ManyToOne
-    @PrimaryKeyJoinColumn(name = "video_metadata_id", referencedColumnName = "id")
-    private VideoMetadataDAO videoMetadata;
+    @JoinColumn(name = "video_metadata_id", referencedColumnName = "id")
+    private VideoMetadataDAO video_metadata;
 
+    @Id
     @ManyToOne
-    @PrimaryKeyJoinColumn(name = "subgenre_id", referencedColumnName = "id")
+    @JoinColumn(name = "subgenre_id", referencedColumnName = "id")
     private SubgenreDAO subgenre;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public VideoMetadataDAO getVideoMetadata() {
-        return videoMetadata;
+        return video_metadata;
     }
 
     public void setVideoMetadata(VideoMetadataDAO videoMetadata) {
-        this.videoMetadata = videoMetadata;
+        this.video_metadata = videoMetadata;
     }
 
     public SubgenreDAO getSubgenre() {

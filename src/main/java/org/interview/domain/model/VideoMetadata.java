@@ -10,6 +10,7 @@ public class VideoMetadata {
     private final Genre genre;
     private final List<String> subgenres;
     private final Integer releaseYear;
+    private final Integer duration;
 
     private VideoMetadata(Builder builder) {
         this.id = builder.id;
@@ -19,6 +20,7 @@ public class VideoMetadata {
         this.genre = builder.genre;
         this.subgenres = builder.subgenres;
         this.releaseYear = builder.releaseYear;
+        this.duration = builder.duration;
     }
 
     public Long getId() {
@@ -31,6 +33,10 @@ public class VideoMetadata {
 
     public String getAlbum() {
         return album;
+    }
+
+    public Integer getDuration() {
+        return duration;
     }
 
     public String getArtist() {
@@ -61,8 +67,14 @@ public class VideoMetadata {
         private Genre genre;
         private List<String> subgenres;
         private Integer releaseYear;
+        private Integer duration;
 
         private Builder(){}
+
+        public Builder setDuration(Integer duration) {
+            this.duration = duration;
+            return this;
+        }
 
         public Builder setId(Long id) {
             this.id = id;

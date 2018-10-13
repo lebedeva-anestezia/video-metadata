@@ -10,7 +10,6 @@ import java.util.List;
 public class VideoMetadataDAO {
 
     @Id
-    @PrimaryKeyJoinColumn
     private Long id;
     private String title;
     private String album;
@@ -19,7 +18,10 @@ public class VideoMetadataDAO {
     @ManyToOne
     private GenreDAO genre;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
     @JoinTable(name = "SUBGENRE_TO_VIDEO_METADATA",
             joinColumns = @JoinColumn(name = "video_metadata_id"),
             inverseJoinColumns = @JoinColumn(name = "subgenre_id")
@@ -28,6 +30,8 @@ public class VideoMetadataDAO {
 
     @Column(name = "release_year")
     private Integer releaseYear;
+
+    private Integer duration;
 
     public Long getId() {
         return id;
@@ -83,5 +87,13 @@ public class VideoMetadataDAO {
 
     public void setReleaseYear(Integer releaseYear) {
         this.releaseYear = releaseYear;
+    }
+
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Integer duration) {
+        this.duration = duration;
     }
 }

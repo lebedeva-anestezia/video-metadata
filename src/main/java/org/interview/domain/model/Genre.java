@@ -1,5 +1,7 @@
 package org.interview.domain.model;
 
+import java.util.Arrays;
+
 public enum Genre {
     BLUES("blues"),
     CLASSICAL("classical"),
@@ -15,5 +17,13 @@ public enum Genre {
 
     Genre(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public static Genre fromName(String name) {
+        return Arrays.stream(Genre.values()).filter(g -> g.name.equals(name)).findAny().get();
     }
 }
