@@ -33,10 +33,12 @@ public class VideoMetadataService {
     }
 
     public void createVideo(VideoMetadata videoMetadata) {
+        validationService.isCreationParametersValid(videoMetadata);
         videoMetadataRepository.save(domainToDao(videoMetadata));
     }
 
     public void updateVideo(VideoMetadata videoMetadata) {
+        validationService.isUpdateParametersValid(videoMetadata);
         videoMetadataRepository.save(domainToDao(videoMetadata));
     }
 

@@ -5,6 +5,8 @@ import org.interview.repository.VideoMetadataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
+
 @Service
 public class ValidationService {
 
@@ -15,15 +17,30 @@ public class ValidationService {
         this.videoMetadataRepository = videoMetadataRepository;
     }
 
-    public boolean isCreationParametersValid(VideoMetadata videoMetadata) {
-        return true;
+    public void isCreationParametersValid(VideoMetadata videoMetadata) {
+        if (isIdExist(videoMetadata.getId())) {
+            throw new IllegalArgumentException("Video Metadata with the passed ID already exist");
+        }
+        if (!checkYearIsValid(videoMetadata.getReleaseYear())) {
+            throw new IllegalArgumentException("The passed release year is invalid");
+        }
     }
 
-    public boolean isUpdateParametersValid(VideoMetadata videoMetadata) {
-        return true;
+    public void isUpdateParametersValid(VideoMetadata videoMetadata) {
+        if (!checkYearIsValid(videoMetadata.getReleaseYear())) {
+            throw new IllegalArgumentException("The passed release year is invalid");
+        }
     }
 
-    public boolean isDeleteParametersValid(Long id) {
-        return true;
+    public void isDeleteParametersValid(Long id) {
+
+    }
+
+    private boolean isIdExist(Long id) {
+        return videoMetadataRepository.existsById(id);
+    }
+
+    private boolean checkYearIsValid(Integer year) {
+        return year > 0 && year <= Calendar.getInstance().get(Calendar.YEAR);
     }
 }
