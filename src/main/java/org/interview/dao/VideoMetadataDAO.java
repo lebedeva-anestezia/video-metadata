@@ -2,30 +2,24 @@ package org.interview.dao;
 
 import org.interview.domain.model.Genre;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "video_metadata")
 public class VideoMetadataDAO {
 
+    @Id
+    @PrimaryKeyJoinColumn
     private Long id;
     private String title;
     private String album;
     private String artist;
 
     @ManyToOne
-    @JoinColumn(name = "id")
-    private Genre genre;
+    private GenreDAO genre;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "SUBGENRE_TO_VIDEO_METADATA",
             joinColumns = @JoinColumn(name = "video_metadata_id"),
             inverseJoinColumns = @JoinColumn(name = "subgenre_id")
@@ -67,19 +61,19 @@ public class VideoMetadataDAO {
         this.artist = artist;
     }
 
-    public Genre getGenre() {
+    public GenreDAO getGenre() {
         return genre;
     }
 
-    public void setGenre(Genre genre) {
+    public void setGenre(GenreDAO genre) {
         this.genre = genre;
     }
 
-    public List<String> getSubgenres() {
+    public List<SubgenreDAO> getSubgenres() {
         return subgenres;
     }
 
-    public void setSubgenres(List<String> subgenres) {
+    public void setSubgenres(List<SubgenreDAO> subgenres) {
         this.subgenres = subgenres;
     }
 

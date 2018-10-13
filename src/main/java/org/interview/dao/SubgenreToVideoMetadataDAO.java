@@ -1,24 +1,21 @@
 package org.interview.dao;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "SUBGENRE_TO_VIDEO_METADATA")
 public class SubgenreToVideoMetadataDAO {
 
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "video_metadata_id")
+    @PrimaryKeyJoinColumn(name = "video_metadata_id", referencedColumnName = "id")
     private VideoMetadataDAO videoMetadata;
 
     @ManyToOne
-    @JoinColumn(name = "subgenre_id")
+    @PrimaryKeyJoinColumn(name = "subgenre_id", referencedColumnName = "id")
     private SubgenreDAO subgenre;
 
     public Long getId() {

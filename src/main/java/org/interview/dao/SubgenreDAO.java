@@ -1,14 +1,14 @@
 package org.interview.dao;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "SUBGENRE")
 public class SubgenreDAO {
 
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @PrimaryKeyJoinColumn
     private Long id;
 
     private String name;

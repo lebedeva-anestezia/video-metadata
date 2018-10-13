@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/video/metadata")
 public class VideoMetadataRestController {
 
-
     @RequestMapping(method = RequestMethod.POST)
     public VideoMetadataDTO create(VideoMetadataDTO videoMetadataDTO) {
         return new VideoMetadataDTO();
@@ -20,8 +19,13 @@ public class VideoMetadataRestController {
         return new VideoMetadataDTO();
     }
 
-    @RequestMapping(method = RequestMethod.PATCH)
+    @RequestMapping(method = RequestMethod.DELETE)
     public boolean delete(@PathVariable("id") int itemId) {
+        return true;
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public boolean findAll() {
         return true;
     }
 }

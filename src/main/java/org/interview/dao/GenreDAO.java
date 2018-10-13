@@ -1,17 +1,15 @@
 package org.interview.dao;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "GENRE")
 public class GenreDAO {
 
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
     private Long id;
     private String name;
-
 
     public Long getId() {
         return id;
