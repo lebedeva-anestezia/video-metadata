@@ -1,11 +1,12 @@
 package org.interview.domain.model;
 
 import java.util.List;
+import java.util.Optional;
 
 public class VideoMetadata {
     private final Long id;
     private final String title;
-    private final String album;
+    private final Optional<String> album;
     private final String artist;
     private final Genre genre;
     private final List<String> subgenres;
@@ -31,7 +32,7 @@ public class VideoMetadata {
         return title;
     }
 
-    public String getAlbum() {
+    public Optional<String> getAlbum() {
         return album;
     }
 
@@ -62,7 +63,7 @@ public class VideoMetadata {
     public static class Builder {
         private Long id;
         private String title;
-        private String album;
+        private Optional<String> album;
         private String artist;
         private Genre genre;
         private List<String> subgenres;
@@ -86,7 +87,7 @@ public class VideoMetadata {
             return this;
         }
 
-        public Builder setAlbum(String album) {
+        public Builder setAlbum(Optional<String> album) {
             this.album = album;
             return this;
         }

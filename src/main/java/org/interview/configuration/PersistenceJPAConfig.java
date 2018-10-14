@@ -56,7 +56,7 @@ public class PersistenceJPAConfig {
     }
 
 
-    Properties additionalProperties() {
+    private Properties additionalProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
         properties.put("hibernate.show_sql", "true");

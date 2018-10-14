@@ -1,6 +1,7 @@
 package org.interview.domain.model;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 public enum Genre {
     BLUES("blues"),
@@ -24,6 +25,10 @@ public enum Genre {
     }
 
     public static Genre fromName(String name) {
-        return Arrays.stream(Genre.values()).filter(g -> g.name.equals(name)).findAny().get();
+        Optional<Genre> optionalGenre = Arrays.stream(Genre.values()).filter(g -> g.name.equals(name)).findAny();
+        if (optionalGenre.isPresent()) {
+            return optionalGenre.get();
+        }
+        throw new IllegalArgumentException("The passed name " + name + " doesn't correspond to any exiting genre");
     }
 }

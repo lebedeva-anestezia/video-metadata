@@ -1,11 +1,12 @@
 package org.interview.rest;
 
 import java.util.List;
+import java.util.Optional;
 
 public class VideoMetadataDTO {
     private Long id;
     private String title;
-    private String album = "";
+    private Optional<String> album;
     private String artist;
     private Integer duration;
     private String genre;
@@ -28,12 +29,12 @@ public class VideoMetadataDTO {
         this.title = title;
     }
 
-    public String getAlbum() {
+    public Optional<String> getAlbum() {
         return album;
     }
 
     public void setAlbum(String album) {
-        this.album = album;
+        this.album = Optional.ofNullable(album);
     }
 
     public String getArtist() {

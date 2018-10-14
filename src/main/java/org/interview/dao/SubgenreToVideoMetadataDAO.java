@@ -14,26 +14,10 @@ public class SubgenreToVideoMetadataDAO implements Serializable {
     @Id
     @ManyToOne
     @JoinColumn(name = "video_metadata_id", referencedColumnName = "id")
-    private VideoMetadataDAO video_metadata;
+    private VideoMetadataDAO videoMetadata;
 
     @Id
     @ManyToOne
     @JoinColumn(name = "subgenre_id", referencedColumnName = "id")
     private SubgenreDAO subgenre;
-
-    public VideoMetadataDAO getVideoMetadata() {
-        return video_metadata;
-    }
-
-    public void setVideoMetadata(VideoMetadataDAO videoMetadata) {
-        this.video_metadata = videoMetadata;
-    }
-
-    public SubgenreDAO getSubgenre() {
-        return subgenre;
-    }
-
-    public void setSubgenre(SubgenreDAO subgenre) {
-        this.subgenre = subgenre;
-    }
 }

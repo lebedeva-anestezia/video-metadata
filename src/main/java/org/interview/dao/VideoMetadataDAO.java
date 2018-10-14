@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "video_metadata")
+@Table(name = "VIDEO_METADATA")
 public class VideoMetadataDAO {
 
     @Id
@@ -20,7 +20,7 @@ public class VideoMetadataDAO {
 
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
-            CascadeType.MERGE
+            CascadeType.MERGE,
     })
     @JoinTable(name = "SUBGENRE_TO_VIDEO_METADATA",
             joinColumns = @JoinColumn(name = "video_metadata_id"),

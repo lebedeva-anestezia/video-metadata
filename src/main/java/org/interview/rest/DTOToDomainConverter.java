@@ -3,7 +3,7 @@ package org.interview.rest;
 import org.interview.domain.model.Genre;
 import org.interview.domain.model.VideoMetadata;
 
-public class DTOToDomainConverter {
+class DTOToDomainConverter {
 
     static VideoMetadata videoMetadata(VideoMetadataDTO dto) {
         return VideoMetadata.builder()
