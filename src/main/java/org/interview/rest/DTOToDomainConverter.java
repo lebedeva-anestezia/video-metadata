@@ -12,7 +12,7 @@ class DTOToDomainConverter {
                 .setArtist(dto.getArtist())
                 .setReleaseYear(dto.getReleaseYear())
                 .setDuration(dto.getDuration())
-                .setGenre(Genre.fromName(dto.getGenre()))
+                .setGenre(dto.getGenre() != null ? Genre.fromName(dto.getGenre()) : null)
                 .setSubgenres(dto.getSubgenres())
                 .setAlbum(dto.getAlbum())
                 .build();
